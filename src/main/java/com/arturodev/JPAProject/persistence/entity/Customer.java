@@ -18,4 +18,8 @@ public class Customer {
 
     private String name;
     private String password;
+
+    @OneToOne(targetEntity = Address.class, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "address_id")
+    private Address address;
 }
