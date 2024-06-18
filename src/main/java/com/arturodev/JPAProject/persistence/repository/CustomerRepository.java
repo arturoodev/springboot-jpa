@@ -29,4 +29,10 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query("select c from Customer c where c.name like %?1% and c.id >= ?2 order by c.id desc ")
     List<Customer> findAllByNameAndIdGreaterThan(String name, Long id);
+
+    List<Customer> findByAddressesCountry(String country);
+
+    @Query("select c from Customer c join fetch addresses addr where addr.country = ?1")
+    List<Customer> findCustomersFrom(String country);
+
 }

@@ -19,7 +19,8 @@ public class Address {
     private String country;
     private String address;
 
-    @Column(name = "id_customer")
-    private Long customerID;
-
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_customer")
+    private Customer customer;
 }
