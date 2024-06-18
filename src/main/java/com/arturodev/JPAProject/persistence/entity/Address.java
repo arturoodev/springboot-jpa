@@ -19,7 +19,7 @@ public class Address {
     private String country;
     private String address;
 
-    @OneToOne(mappedBy = "address")
-    private Customer customer;
+    @Column(name = "id_customer")
+    private Long customerID;
 
 }

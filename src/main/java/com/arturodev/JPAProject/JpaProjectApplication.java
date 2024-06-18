@@ -3,13 +3,11 @@ package com.arturodev.JPAProject;
 import com.arturodev.JPAProject.persistence.entity.Address;
 import com.arturodev.JPAProject.persistence.entity.Customer;
 import com.arturodev.JPAProject.persistence.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -30,30 +28,19 @@ public class JpaProjectApplication {
             Customer arturo = new Customer();
             arturo.setName("Arturo");
             arturo.setPassword("arturo123");
-            Address addressArturo = new Address();
-            addressArturo.setCountry("Peru");
-            addressArturo.setAddress("Barranca - Lima");
-            arturo.setAddress(addressArturo);
+            arturo.setUsername("arturoP");
 
-            Customer jose = new Customer();
-            jose.setName("Jose");
-            jose.setPassword("jose123");
-            Address addressJose = new Address();
-            addressJose.setCountry("Peru");
-            addressJose.setAddress("Huacho - Lima");
-            jose.setAddress(addressJose);
+            Address addressArturoOne = new Address();
+            addressArturoOne.setCountry("Peru");
+            addressArturoOne.setAddress("Huacho - Lima");
 
-            Customer pedro = new Customer();
-            pedro.setName("Pedro");
-            pedro.setPassword("pedro123");
-            Address addressPedro = new Address();
-            addressPedro.setCountry("Peru");
-            addressPedro.setAddress("Huarua - Lima");
-            pedro.setAddress(addressPedro);
+            Address addressArturoTwo = new Address();
+            addressArturoTwo.setCountry("Peru");
+            addressArturoTwo.setAddress("Barranca - Lima");
 
-            List<Customer> customers = List.of(arturo, jose, pedro);
-
-            customerRepository.saveAll(customers);
+            arturo.setAddresses(List.of(addressArturoOne, addressArturoTwo));
+            System.out.println(arturo);
+//            customerRepository.save(arturo);
 
         };
     }

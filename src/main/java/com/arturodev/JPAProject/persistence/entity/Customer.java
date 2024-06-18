@@ -3,11 +3,13 @@ package com.arturodev.JPAProject.persistence.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(exclude = {"addresses"})
 @Entity
 @Table(name = "customers")
 public class Customer {
@@ -17,9 +19,10 @@ public class Customer {
     private Long id;
 
     private String name;
+    private String username;
     private String password;
 
-    @OneToOne(targetEntity = Address.class, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_customer")
+    private List<Address> addresses;
 }
